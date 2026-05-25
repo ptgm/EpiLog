@@ -11,199 +11,173 @@
 	<description>EpiLog: a software for the logical modelling of epithelial patterning</description>
   <inceptionYear>2013</inceptionYear>
   <packaging>jar</packaging>
-	<url>http://epilog-tool.org</url>
+	<url>https://github.epilog.io</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.main.class>${project.groupId}.Launcher</project.main.class>
   </properties>
 
-  <repositories>
-    <!-- GINsim repository provides ready-to-use jars for MDDlib, JSBML -->
-		<repository>
-			<id>ginsim_snapshot</id>
-			<snapshots><enabled>true</enabled></snapshots>
-			<releases><enabled>false</enabled></releases>
-			<name>GINsim snapshot repository</name>
-			<url>http://ginsim.org/maven/snapshot</url>
-		</repository>
-		<repository>
-			<id>ginsim_stable</id>
-			<snapshots><enabled>false</enabled></snapshots>
-			<releases><enabled>true</enabled></releases>
-			<name>GINsim deps</name>
-			<url>http://ginsim.org/maven/stable</url>
-		</repository>
-
-  </repositories>
-
-
-	<dependencies>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr4-runtime</artifactId>
-			<version>4.7.1</version>
-		</dependency>
+  <dependencies>
 
     <dependency>
-      <groupId>org.colomoto</groupId>
-      <artifactId>MDDlib</artifactId>
-      <version>0.3-SNAPSHOT</version>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-runtime</artifactId>
+      <version>4.7.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.colomoto</groupId>
       <artifactId>bioLQM</artifactId>
-      <version>0.7.1</version>
+      <version>0.8</version>
     </dependency>
 
-		<dependency>
-			<groupId>com.apple</groupId>
-			<artifactId>AppleJavaExtensions</artifactId>
-			<version>1.4</version>
-		</dependency>
+    <dependency>
+      <groupId>com.apple</groupId>
+      <artifactId>AppleJavaExtensions</artifactId>
+      <version>1.4</version>
+    </dependency>
 
-		<dependency>
-			<groupId>com.martiansoftware</groupId>
-			<artifactId>jsap</artifactId>
-			<version>2.1</version>
-		</dependency>
+    <dependency>
+      <groupId>com.martiansoftware</groupId>
+      <artifactId>jsap</artifactId>
+      <version>2.1</version>
+    </dependency>
 
-		<!-- For Java version check -->
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-artifact</artifactId>
-			<version>3.0.3</version>
-		</dependency>
+    <!-- For Java version check -->
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <version>3.0.3</version>
+    </dependency>
 
-		<!-- For EpiLog version: pom.xml to Java --> 
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-model</artifactId>
-			<version>3.5.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.plexus</groupId>
-			<artifactId>plexus-utils</artifactId>
-			<version>4.0.3</version>
-		</dependency>
+    <!-- For EpiLog version: pom.xml to Java --> 
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <version>3.5.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>3.1.0</version>
+    </dependency>
 
   </dependencies>
 
 
-	<build>
-			<plugins>
+  <build>
+    <plugins>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-					<configuration>
-						<release>10</release>
-					</configuration>
-				</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <release>10</release>
+        </configuration>
+      </plugin>
 
-				<plugin>
-					<groupId>org.antlr</groupId>
-					<artifactId>antlr4-maven-plugin</artifactId>
-					<version>4.7.1</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>antlr4</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+      <plugin>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr4-maven-plugin</artifactId>
+        <version>4.7.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>antlr4</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
-					<configuration>
-						<archive>
-							<manifest>
-								<addClasspath>true</addClasspath>
-								<classpathPrefix>lib/</classpathPrefix>
-								<useUniqueVersions>false</useUniqueVersions>
-								<mainClass>${project.main.class}</mainClass>
-							</manifest>
-						</archive>
-					</configuration>
-				</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <useUniqueVersions>false</useUniqueVersions>
+              <mainClass>${project.main.class}</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<configuration>
-						<descriptors>
-							<descriptor>assembly-jar.xml</descriptor>
-						</descriptors>
-						<archive>
-							<manifest>
-								<addClasspath>true</addClasspath>
-								<mainClass>${project.main.class}</mainClass>
-							</manifest>
-							<manifestEntries>
-								<Project-Version>${project.version}</Project-Version>
-								<Project-Name>${project.artifactId}_${project.version}</Project-Name>
-							</manifestEntries>
-						</archive>
-					</configuration>
-					<executions> <!-- launch assembly:single during package -->
-						<execution>
-							<id>make-assembly</id>
-							<phase>package</phase>
-							<goals>
-								<goal>single</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>assembly-jar.xml</descriptor>
+          </descriptors>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>${project.main.class}</mainClass>
+            </manifest>
+            <manifestEntries>
+              <Project-Version>${project.version}</Project-Version>
+              <Project-Name>${project.artifactId}_${project.version}</Project-Name>
+            </manifestEntries>
+          </archive>
+        </configuration>
+        <executions> <!-- launch assembly:single during package -->
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-				<plugin>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<executions>
-						<execution>
-							<phase>package</phase>
-							<goals>
-								<goal>copy-dependencies</goal>
-							</goals>
-							<configuration>
-								<includeScope>runtime</includeScope>
-								<excludeScope>provided</excludeScope>
-								<outputDirectory>${project.build.directory}/lib</outputDirectory>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeScope>runtime</includeScope>
+              <excludeScope>provided</excludeScope>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.9.1</version>
-				</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+      </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.12</version>
-					<configuration>
-						<includes>
-							<include>org/epilogtool/AllTests.java</include>
-						</includes>
-					</configuration>
-				</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12</version>
+        <configuration>
+          <includes>
+            <include>org/epilogtool/AllTests.java</include>
+          </includes>
+        </configuration>
+      </plugin>
 
-			</plugins>
-	</build>
+    </plugins>
+  </build>
 
 </project>
