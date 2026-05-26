@@ -14,6 +14,7 @@
 	<url>https://github.epilog.io</url>
 
   <properties>
+    <project.java.version>11</project.java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.main.class>${project.groupId}.Launcher</project.main.class>
   </properties>
@@ -67,7 +68,7 @@
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
-      <version>3.1.0</version>
+      <version>3.6.1</version>
     </dependency>
 
   </dependencies>
